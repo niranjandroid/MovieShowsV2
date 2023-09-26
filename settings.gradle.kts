@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MovieShows"
 include(":app")
- 
+include(":core")
