@@ -31,3 +31,15 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+
+/captures
+.externalNativeBuild
+.cxx
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+secrets.properties

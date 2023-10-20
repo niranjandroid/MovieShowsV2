@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MovieShows</string>
+    <string name="cd_splash_image" translatable="false">Splash Image</string>
+</resources>
