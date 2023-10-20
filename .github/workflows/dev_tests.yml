@@ -1,0 +1,67 @@
+name: Build & Run tests
+on:
+  push:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+jobs:
+  Build:
+    name: Build app
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: app
+      - name: Install JDK 18
+        uses: actions/setup-java@v1
+        with:
+          java-version: 18
+
+      - name: Cache (Android SDK & Tools)
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/android-sdk/build-tools/31.0.2
+            ~/android-sdk/platforms/android-33
+            ~/android-sdk/platform-tools
+          key: ${{ runner.os }}-sdk-tools-2022
+
+      - name: Cache (Gradle)
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Install Android sdkmanager
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        uses: malinskiy/action-android/install-sdk@release/0.1.4
+
+      - name: Build App
+        run: |
+          cd app
+          bash ./gradlew assembleDevDebug
+
+  Tests:
+    - needs: Build
+    - name: Run Unit Tests
+      run: |
+        cd app
+        bash ./gradlew clean testdevDebug
+
+  UITests:
+    - needs: Build
+    - name: Run Instrumentation Tests
+      run: |
+        cd app
+        bash ./gradlew assembleDevDebugAndroidTest
+
