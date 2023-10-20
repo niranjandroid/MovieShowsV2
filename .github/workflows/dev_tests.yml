@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build:
+  build:
     name: Build app
     runs-on: ubuntu-latest
     concurrency:
@@ -51,14 +51,14 @@ jobs:
           cd app
           bash ./gradlew assembleDevDebug
 
-  Tests:
-    - needs: Build
+  tests:
+    - needs: build
     - name: Run Unit Tests
       run: |
         cd app
         bash ./gradlew clean testdevDebug
 
-  UITests:
+  androidTests:
     - needs: Build
     - name: Run Instrumentation Tests
       run: |
