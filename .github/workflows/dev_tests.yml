@@ -52,16 +52,17 @@ jobs:
           bash ./gradlew assembleDevDebug
 
   tests:
-    - needs: build
-    - name: Run Unit Tests
-      run: |
-        cd app
-        bash ./gradlew clean testdevDebug
+    needs: build
+    name: Run Unit Tests
+    run: |
+      cd app
+      bash ./gradlew clean testdevDebug
 
   androidTests:
-    - needs: Build
-    - name: Run Instrumentation Tests
-      run: |
+    needs: build
+    runs-on: macOS-latest # enables hardware acceleration in the virtual machine
+    name: Run Instrumentation Tests
+    run: |
         cd app
         bash ./gradlew assembleDevDebugAndroidTest
 
