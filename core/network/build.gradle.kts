@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -37,8 +37,8 @@ dependencies {
     implementation(Coroutines.androidCoroutines)
 
     implementation(DaggerHilt.hiltAndroid)
-    kapt(DaggerHilt.hiltCompiler)
-    kapt(DaggerHilt.hiltExtCompiler)
+    ksp(DaggerHilt.hiltCompiler)
+    ksp(DaggerHilt.hiltExtCompiler)
 
     testImplementation(Testing.junit4)
 }
