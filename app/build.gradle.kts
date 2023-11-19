@@ -59,6 +59,7 @@ dependencies {
     implementation(Compose.runtime)
     implementation(Compose.navigation)
     implementation(Compose.viewModelCompose)
+    implementation(Compose.lifecycleRuntimeCompose)
     implementation(Compose.activityCompose)
 
     implementation(DaggerHilt.hiltAndroid)
@@ -66,6 +67,7 @@ dependencies {
 
     implementation(project(Modules.data))
     implementation(project(Modules.network))
+    implementation(project(Modules.domain))
 
 
     implementation(AndroidX.coreKtx)

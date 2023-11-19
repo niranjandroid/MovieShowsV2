@@ -1,7 +1,7 @@
 package com.niranjan.network.retrofit
 
 import com.niranjan.network.MovieShowsDataSource
-import com.niranjan.network.model.MovieResponse
+import com.niranjan.network.models.MovieResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Inject

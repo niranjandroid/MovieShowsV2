@@ -1,18 +1,8 @@
-package com.niranjan.network.model
+package com.niranjan.network.models
 
 import com.squareup.moshi.Json
 
-data class MovieResponse(
-    val page: Long,
-    val results: List<Movie>,
-    @field:Json(name = "total_pages")
-    val totalPages: Long,
-    @field:Json(name = "total_results")
-    val totalResults: Long,
-)
-
-
-data class Movie(
+data class NetworkMovieResource(
     val adult: Boolean,
     @field:Json(name = "backdrop_path")
     val backdropPath: String,

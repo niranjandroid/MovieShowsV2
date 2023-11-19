@@ -14,7 +14,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MovieShowsTheme {
-                Log.d("TEST@!", "loading")
                 MovieShowsListScreen()
             }
         }
