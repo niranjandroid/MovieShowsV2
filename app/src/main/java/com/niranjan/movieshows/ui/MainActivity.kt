@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.niranjan.movieshows.MovieShowsListScreen
+import com.niranjan.movieshows.ui.movies.MovieShowsListScreen
 import com.niranjan.movieshows.ui.theme.MovieShowsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +14,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MovieShowsTheme {
-                Log.d("TEST@!", "loading")
                 MovieShowsListScreen()
             }
         }

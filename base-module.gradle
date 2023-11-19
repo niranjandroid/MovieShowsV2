@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdk ProjectConfig.compileSdk
@@ -33,13 +31,11 @@ android {
 }
 
 dependencies {
-    kapt DaggerHilt.hiltCompiler
-    implementation DaggerHilt.hiltAndroid
 
     testImplementation Testing.junit4
     testImplementation Testing.junitAndroidExt
     testImplementation Testing.truth
-    testImplementation Testing.coroutines
+    testImplementation Coroutines.testingCoroutines
     testImplementation Testing.turbine
     testImplementation Testing.composeUiTest
     testImplementation Testing.mockk
@@ -48,7 +44,7 @@ dependencies {
     androidTestImplementation Testing.junit4
     androidTestImplementation Testing.junitAndroidExt
     androidTestImplementation Testing.truth
-    androidTestImplementation Testing.coroutines
+    androidTestImplementation Coroutines.testingCoroutines
     androidTestImplementation Testing.turbine
     androidTestImplementation Testing.composeUiTest
     androidTestImplementation Testing.mockk

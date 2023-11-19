@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -20,8 +20,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String", "API_KEY", getProperty("API_KEY"))
-        buildConfigField("String", "BASE_URL", getProperty("BASE_URL"))
     }
 
     buildTypes {
@@ -61,12 +59,16 @@ dependencies {
     implementation(Compose.runtime)
     implementation(Compose.navigation)
     implementation(Compose.viewModelCompose)
+    implementation(Compose.lifecycleRuntimeCompose)
     implementation(Compose.activityCompose)
 
     implementation(DaggerHilt.hiltAndroid)
-    kapt(DaggerHilt.hiltCompiler)
+    ksp(DaggerHilt.hiltCompiler)
 
-    implementation(project(Modules.core))
+    implementation(project(Modules.data))
+    implementation(project(Modules.network))
+    implementation(project(Modules.domain))
+
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
@@ -80,14 +82,14 @@ dependencies {
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.moshiConverter)
 
-    kapt(Room.roomCompiler)
+    ksp(Room.roomCompiler)
     implementation(Room.roomKtx)
     implementation(Room.roomRuntime)
 
     testImplementation(Testing.junit4)
     testImplementation(Testing.junitAndroidExt)
     testImplementation(Testing.truth)
-    testImplementation(Testing.coroutines)
+    testImplementation(Coroutines.testingCoroutines)
     testImplementation(Testing.turbine)
     testImplementation(Testing.composeUiTest)
     testImplementation(Testing.mockk)
@@ -96,13 +98,13 @@ dependencies {
     androidTestImplementation(Testing.junit4)
     androidTestImplementation(Testing.junitAndroidExt)
     androidTestImplementation(Testing.truth)
-    androidTestImplementation(Testing.coroutines)
+    androidTestImplementation(Coroutines.testingCoroutines)
     androidTestImplementation(Testing.turbine)
     androidTestImplementation(Testing.composeUiTest)
     androidTestImplementation(Testing.mockkAndroid)
     androidTestImplementation(Testing.mockWebServer)
     androidTestImplementation(Testing.hiltTesting)
-    kaptAndroidTest(DaggerHilt.hiltCompiler)
+    kspAndroidTest(DaggerHilt.hiltCompiler)
     androidTestImplementation(Testing.testRunner)
 }
 

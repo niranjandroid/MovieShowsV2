@@ -1,6 +1,6 @@
 object Compose {
-    const val composeVersion = "1.5.0"
-    const val composeCompilerVersion = "1.4.5"
+    const val composeVersion = "1.5.4"
+    const val composeCompilerVersion = "1.5.4"
     const val composeMaterialVersion = "1.1.2"
     const val material = "androidx.compose.material3:material3:$composeMaterialVersion"
     const val ui = "androidx.compose.ui:ui:$composeVersion"
@@ -17,6 +17,8 @@ object Compose {
     private const val activityComposeVersion = "1.6.1"
     const val activityCompose = "androidx.activity:activity-compose:$activityComposeVersion"
 
-    private const val lifecycleVersion = "2.6.0"
+    private const val lifecycleVersion = "2.6.2"
     const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+    const val lifecycleRuntimeCompose = "androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion"
+
 }
