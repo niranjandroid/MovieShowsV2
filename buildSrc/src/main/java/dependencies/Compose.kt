@@ -1,6 +1,6 @@
 object Compose {
     const val composeVersion = "1.5.0"
-    const val composeCompilerVersion = "1.4.5"
+    const val composeCompilerVersion = "1.5.4"
     const val composeMaterialVersion = "1.1.2"
     const val material = "androidx.compose.material3:material3:$composeMaterialVersion"
     const val ui = "androidx.compose.ui:ui:$composeVersion"

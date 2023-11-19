@@ -20,8 +20,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String", "API_KEY", getProperty("API_KEY"))
-        buildConfigField("String", "BASE_URL", getProperty("BASE_URL"))
     }
 
     buildTypes {
@@ -66,7 +64,9 @@ dependencies {
     implementation(DaggerHilt.hiltAndroid)
     kapt(DaggerHilt.hiltCompiler)
 
-    implementation(project(Modules.core))
+    implementation(project(Modules.data))
+    implementation(project(Modules.network))
+
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
@@ -87,7 +87,7 @@ dependencies {
     testImplementation(Testing.junit4)
     testImplementation(Testing.junitAndroidExt)
     testImplementation(Testing.truth)
-    testImplementation(Testing.coroutines)
+    testImplementation(Coroutines.testingCoroutines)
     testImplementation(Testing.turbine)
     testImplementation(Testing.composeUiTest)
     testImplementation(Testing.mockk)
@@ -96,7 +96,7 @@ dependencies {
     androidTestImplementation(Testing.junit4)
     androidTestImplementation(Testing.junitAndroidExt)
     androidTestImplementation(Testing.truth)
-    androidTestImplementation(Testing.coroutines)
+    androidTestImplementation(Coroutines.testingCoroutines)
     androidTestImplementation(Testing.turbine)
     androidTestImplementation(Testing.composeUiTest)
     androidTestImplementation(Testing.mockkAndroid)
